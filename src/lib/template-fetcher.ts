@@ -1,4 +1,3 @@
-// 📁 src/lib/template-fetcher.ts
 import chalk from 'chalk';
 import { execSync } from 'child_process';
 import fs from 'fs-extra';
@@ -33,7 +32,8 @@ const OPTIONAL_FOLDERS: (keyof AppOptions)[] = [
 
 export async function fetchTemplates(
   options: Partial<AppOptions>,
-  config: BoilrkitConfig
+  config: BoilrkitConfig,
+  projectName: string
 ): Promise<void> {
   const repo = config.templates.repo || 'jjwprotozoa/boilrkit-templates';
   const branch = config.templates.branch || 'main';
@@ -68,29 +68,33 @@ export async function fetchTemplates(
       : clonePath;
 
     console.log(chalk.gray(`📦 Using template root: ${resolvedPath}`));
-    await copyTemplateFiles(options, resolvedPath);
+    await copyTemplateFiles(options, resolvedPath, projectName);
     console.log(chalk.green('✅ Templates fetched and copied successfully'));
   } catch (error) {
     console.error(chalk.red(`❌ Failed to fetch templates: ${error}`));
 
-    if (fs.existsSync('./templates')) {
-      console.log(chalk.yellow('⚠️ Using local fallback: ./templates'));
-      await copyTemplateFiles(options, './templates');
-    } else if (fs.existsSync(path.join(os.homedir(), '.boilrkit', 'templates'))) {
-      console.log(chalk.yellow('⚠️ Using offline fallback: ~/.boilrkit/templates'));
-      await copyTemplateFiles(
-        options,
-        path.join(os.homedir(), '.boilrkit', 'templates')
-      );
-    } else {
-      throw new Error(`❌ Could not fetch templates from GitHub and no fallback found.\n➡️ Check your .boilrkitrc or manually clone https://github.com/${repo}`);
+    const fallbackPaths = [
+      './templates',
+      path.join(os.homedir(), '.boilrkit', 'templates'),
+    ];
+
+    for (const fallbackPath of fallbackPaths) {
+      if (fs.existsSync(fallbackPath)) {
+        console.log(chalk.yellow(`⚠️ Using fallback: ${fallbackPath}`));
+        await copyTemplateFiles(options, fallbackPath, projectName);
+        return;
+      }
     }
+
+    throw new Error(`❌ Could not fetch templates from GitHub and no fallback found.\n➡️ Check your .boilrkitrc or manually clone https://github.com/${repo}`);
   }
 }
 
-async function copyTemplateFiles(options: Partial<AppOptions>, templatePath: string): Promise<void> {
+async function copyTemplateFiles(options: Partial<AppOptions>, templatePath: string, projectName: string): Promise<void> {
   const folders = await fs.readdir(templatePath);
-  const available = folders.filter(folder => fs.statSync(path.join(templatePath, folder)).isDirectory());
+  const available = folders.filter(folder =>
+    fs.statSync(path.join(templatePath, folder)).isDirectory()
+  );
 
   if (available.length === 0) {
     console.warn(chalk.red('⚠️ No template folders found!'));
@@ -104,7 +108,7 @@ async function copyTemplateFiles(options: Partial<AppOptions>, templatePath: str
 
     if (!isOptional || options[folder as keyof AppOptions]) {
       const src = path.join(templatePath, folder);
-      const dest = './';
+      const dest = path.join(projectName);
       console.log(chalk.gray(`📄 Copying ${folder}...`));
       copyDirectory(src, dest);
     } else {
@@ -112,23 +116,24 @@ async function copyTemplateFiles(options: Partial<AppOptions>, templatePath: str
     }
   }
 
-  // ✅ COPY CUSTOM App.tsx
   const selectedAppFile = options.router ? 'App.tsx' : 'AppNoRouter.tsx';
   const customAppPath = path.join(templatePath, selectedAppFile);
-  const targetAppPath = path.join('./src', 'App.tsx');
+  const targetAppPath = path.join(projectName, 'src', 'App.tsx');
 
-  if (fs.existsSync(customAppPath)) {
-    if (fs.existsSync(targetAppPath)) {
-      const backupPath = `${targetAppPath}.bak`;
-      fs.moveSync(targetAppPath, backupPath, { overwrite: true });
-      console.log(chalk.yellow(`🗂️ Backed up existing App.tsx to App.tsx.bak`));
-    }
-
-    fs.copyFileSync(customAppPath, targetAppPath);
-    console.log(chalk.green(`📄 Installed ${selectedAppFile} as src/App.tsx`));
+  if (!fs.existsSync(customAppPath)) {
+    throw new Error(`❌ Template file not found: ${customAppPath}`);
   }
 
-  ensureCorrectFileExtensions('./src');
+  if (fs.existsSync(targetAppPath)) {
+    const backupPath = `${targetAppPath}.bak`;
+    fs.moveSync(targetAppPath, backupPath, { overwrite: true });
+    console.log(chalk.yellow(`🗂️ Backed up existing App.tsx to App.tsx.bak`));
+  }
+
+  fs.copyFileSync(customAppPath, targetAppPath);
+  console.log(chalk.green(`📄 Installed ${selectedAppFile} as ${targetAppPath}`));
+
+  ensureCorrectFileExtensions(path.join(projectName, 'src'));
 }
 
 function copyDirectory(src: string, dest: string): void {

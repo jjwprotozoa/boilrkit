@@ -134,7 +134,7 @@ export default {
     const { fetchTemplates } = await import('./lib/template-fetcher.js');
     const configModule = await import('./lib/config.js');
     const config = await configModule.loadUserConfig();
-    await fetchTemplates(options, config);
+    await fetchTemplates(options, config, projectName);
     spinner.succeed('📂 Templates fetched and copied');
   } catch (err) {
     spinner.fail(`Failed to fetch templates: ${err}`);
