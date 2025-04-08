@@ -1,0 +1,145 @@
+﻿Project Structure Analysis
+========================
+Timestamp: 2025-04-08 10:43:58
+Base Path: C:\Users\DevBox\Boilrkit\boilrkit
+Total Files: 60
+
+Directory Structure:
+-------------------
+boilrkit.config.ts
+my-app
+  eslint.config.js
+  postcss.config.js
+  src
+    App.tsx
+    main.tsx
+    vite-env.d.ts
+  tailwind.config.js
+  vite.config.ts
+src
+  bin
+    boilrkit.d.ts
+    boilrkit.js.tsx
+    boilrkit.ts
+    boilrkit.ts.tsx
+  create-app.d.ts
+  create-app.tsx
+  env.d.ts
+  index.d.ts
+  index.ts
+  lib
+    config.d.ts
+    config.ts
+    core.js
+    core.js.tsx
+    flags.ts
+    git-helper.d.ts
+    git-helper.ts
+    log.ts
+    template-fetcher.d.ts
+    template-fetcher.ts
+    template-installer.d.ts
+    template-installer.tsx
+  scripts
+    app-structure.txt.js
+    clean-tsconfig.ts
+    fix-esm-require.ts
+    fix-imports.ts
+    fix-project-structure.ts
+  store.d.ts
+  store.ts
+  templates
+    ai
+      useClaude.d.ts
+      useClaude.ts
+      useGPT.d.ts
+      useGPT.ts
+    App.d.ts
+    App.tsx
+    AppNoRouter.d.ts
+    AppNoRouter.tsx
+    components
+      Navbar.d.ts
+      Navbar.tsx
+      payments
+        PaymentForm.d.ts
+        PaymentForm.tsx
+    pages
+      Dashboard.d.ts
+      Dashboard.tsx
+      Home.d.ts
+      Home.tsx
+      NotFound.d.ts
+      NotFound.tsx
+    stores
+      useAppStore.d.ts
+      useAppStore.ts
+  utils
+    getVersion.d.ts
+    getVersion.ts
+    version.d.ts
+    version.ts
+
+
+Detailed File Information:
+-------------------------
+boilrkit.config.ts (Size: 287 bytes, Last Modified: 2025-04-08 04:43:37)
+my-app\eslint.config.js (Size: 734 bytes, Last Modified: 2025-04-03 07:05:30)
+my-app\postcss.config.js (Size: 90 bytes, Last Modified: 2025-04-08 10:40:19)
+my-app\src\App.tsx (Size: 903 bytes, Last Modified: 2025-04-03 07:05:30)
+my-app\src\main.tsx (Size: 230 bytes, Last Modified: 2025-04-03 07:05:30)
+my-app\src\vite-env.d.ts (Size: 38 bytes, Last Modified: 2025-04-03 07:05:30)
+my-app\tailwind.config.js (Size: 138 bytes, Last Modified: 2025-04-08 10:40:19)
+my-app\vite.config.ts (Size: 161 bytes, Last Modified: 2025-04-03 07:05:30)
+src\bin\boilrkit.d.ts (Size: 447 bytes, Last Modified: 2025-04-02 09:23:25)
+src\bin\boilrkit.js.tsx (Size: 3343 bytes, Last Modified: 2025-04-08 07:02:29)
+src\bin\boilrkit.ts (Size: 3014 bytes, Last Modified: 2025-04-08 07:02:29)
+src\bin\boilrkit.ts.tsx (Size: 3183 bytes, Last Modified: 2025-04-08 07:02:29)
+src\create-app.d.ts (Size: 1387 bytes, Last Modified: 2025-04-02 09:26:39)
+src\create-app.tsx (Size: 17399 bytes, Last Modified: 2025-04-08 10:24:34)
+src\env.d.ts (Size: 288 bytes, Last Modified: 2025-04-01 15:38:55)
+src\index.d.ts (Size: 33 bytes, Last Modified: 2025-04-02 04:18:15)
+src\index.ts (Size: 3047 bytes, Last Modified: 2025-04-08 07:02:29)
+src\lib\config.d.ts (Size: 659 bytes, Last Modified: 2025-04-02 04:18:15)
+src\lib\config.ts (Size: 1258 bytes, Last Modified: 2025-04-08 07:12:54)
+src\lib\core.js (Size: 4900 bytes, Last Modified: 2025-04-01 21:04:56)
+src\lib\core.js.tsx (Size: 5503 bytes, Last Modified: 2025-04-02 09:21:00)
+src\lib\flags.ts (Size: 1378 bytes, Last Modified: 2025-04-08 07:37:35)
+src\lib\git-helper.d.ts (Size: 290 bytes, Last Modified: 2025-04-02 04:18:15)
+src\lib\git-helper.ts (Size: 2521 bytes, Last Modified: 2025-04-08 07:12:54)
+src\lib\log.ts (Size: 369 bytes, Last Modified: 2025-04-08 06:18:01)
+src\lib\template-fetcher.d.ts (Size: 478 bytes, Last Modified: 2025-04-02 09:17:01)
+src\lib\template-fetcher.ts (Size: 5610 bytes, Last Modified: 2025-04-08 07:12:54)
+src\lib\template-installer.d.ts (Size: 109 bytes, Last Modified: 2025-04-02 04:18:15)
+src\lib\template-installer.tsx (Size: 4226 bytes, Last Modified: 2025-04-08 07:12:54)
+src\scripts\app-structure.txt.js (Size: 555 bytes, Last Modified: 2025-04-02 04:13:16)
+src\scripts\clean-tsconfig.ts (Size: 3890 bytes, Last Modified: 2025-04-08 07:32:11)
+src\scripts\fix-esm-require.ts (Size: 994 bytes, Last Modified: 2025-04-01 19:07:27)
+src\scripts\fix-imports.ts (Size: 3816 bytes, Last Modified: 2025-04-08 07:02:29)
+src\scripts\fix-project-structure.ts (Size: 1376 bytes, Last Modified: 2025-04-01 20:49:49)
+src\store.d.ts (Size: 810 bytes, Last Modified: 2025-04-02 04:18:15)
+src\store.ts (Size: 1380 bytes, Last Modified: 2025-04-02 09:14:27)
+src\templates\ai\useClaude.d.ts (Size: 81 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\ai\useClaude.ts (Size: 1338 bytes, Last Modified: 2025-04-03 06:17:44)
+src\templates\ai\useGPT.d.ts (Size: 78 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\ai\useGPT.ts (Size: 1242 bytes, Last Modified: 2025-04-03 06:17:53)
+src\templates\App.d.ts (Size: 73 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\App.tsx (Size: 2526 bytes, Last Modified: 2025-04-02 09:12:48)
+src\templates\AppNoRouter.d.ts (Size: 73 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\AppNoRouter.tsx (Size: 3243 bytes, Last Modified: 2025-04-02 09:13:41)
+src\templates\components\Navbar.d.ts (Size: 76 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\components\Navbar.tsx (Size: 9050 bytes, Last Modified: 2025-04-02 09:11:48)
+src\templates\components\payments\PaymentForm.d.ts (Size: 213 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\components\payments\PaymentForm.tsx (Size: 3945 bytes, Last Modified: 2025-04-03 06:16:50)
+src\templates\pages\Dashboard.d.ts (Size: 79 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\pages\Dashboard.tsx (Size: 5324 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\pages\Home.d.ts (Size: 74 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\pages\Home.tsx (Size: 3765 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\pages\NotFound.d.ts (Size: 78 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\pages\NotFound.tsx (Size: 959 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\stores\useAppStore.d.ts (Size: 1628 bytes, Last Modified: 2025-04-02 04:18:16)
+src\templates\stores\useAppStore.ts (Size: 2839 bytes, Last Modified: 2025-04-03 06:35:58)
+src\utils\getVersion.d.ts (Size: 41 bytes, Last Modified: 2025-04-02 04:18:16)
+src\utils\getVersion.ts (Size: 80 bytes, Last Modified: 2025-04-02 04:18:16)
+src\utils\version.d.ts (Size: 41 bytes, Last Modified: 2025-04-02 04:18:15)
+src\utils\version.ts (Size: 33 bytes, Last Modified: 2025-04-02 04:18:15)

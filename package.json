@@ -1,0 +1,80 @@
+{
+  "name": "boilrkit",
+  "version": "0.1.0",
+  "description": "Rapid React + Vite + Firebase SaaS app scaffolding",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "boilrkit": "./dist/bin/boilrkit.js"
+  },
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "prepare": "npm run build",
+    "build": "tsc && node ./dist/scripts/fix-imports.js > boilrkit-build.log",
+    "postbuild": "node -e \"if (process.platform !== 'win32') require('child_process').execSync('chmod +x ./dist/bin/boilrkit.js')\""
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "firebase",
+    "tailwind",
+    "typescript",
+    "zustand",
+    "scaffold",
+    "boilerplate",
+    "CLI",
+    "SaaS",
+    "PWA"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jjwprotozoa/boilrkit.git"
+  },
+  "dependencies": {
+    "@stripe/react-stripe-js": "^3.5.1",
+    "@stripe/stripe-js": "^6.1.0",
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "cli-progress": "^3.12.0",
+    "commander": "^9.5.0",
+    "conf": "^10.2.0",
+    "dotenv": "^16.0.3",
+    "fs-extra": "^11.3.0",
+    "inquirer": "^8.2.6",
+    "json5": "^2.2.3",
+    "listr": "^0.14.3",
+    "node-fetch": "^2.7.0",
+    "open": "^10.1.0",
+    "ora": "^5.4.1",
+    "path": "^0.12.7",
+    "simple-git": "^3.16.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.3",
+    "@types/boxen": "^2.1.0",
+    "@types/cli-progress": "^3.11.6",
+    "@types/fs-extra": "^11.0.4",
+    "@types/glob": "^8.1.0",
+    "@types/inquirer": "^8.2.10",
+    "@types/node": "^18.19.86",
+    "@types/node-fetch": "^2.6.12",
+    "@types/ora": "^3.1.0",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "postcss": "^8.5.3",
+    "prettier": "^2.8.3",
+    "tailwindcss": "^4.1.3",
+    "typescript": "^4.9.4"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

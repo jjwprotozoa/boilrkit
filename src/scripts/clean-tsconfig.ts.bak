@@ -1,0 +1,29 @@
+// 📁 src/scripts/clean-tsconfig.ts
+import fs from 'fs-extra';
+import * as path from 'path';
+import chalk from 'chalk';
+import * as json5 from 'json5';
+
+/**
+ * Fix and clean malformed tsconfig.json files.
+ */
+export function cleanTsConfigs(tsconfigPath: string): void {
+  const raw = fs.readFileSync(tsconfigPath, 'utf-8');
+
+  let parsed: any;
+  try {
+    parsed = json5.parse(raw);
+  } catch (error) {
+    console.error(chalk.red(`❌ Invalid tsconfig JSON: ${error}`));
+    return;
+  }
+
+  // Remove comments or extra metadata here if needed
+
+  // Convert back to plain JSON (not JSON5)
+  const formatted = JSON.stringify(parsed, null, 2);
+  fs.writeFileSync(tsconfigPath, formatted);
+  console.log(chalk.green(`✅ Cleaned tsconfig at: ${tsconfigPath}`));
+}
+
+
