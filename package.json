@@ -9,12 +9,15 @@
   },
   "scripts": {
     "dev": "vite",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "format": "prettier --write .",
     "prepare": "npm run build",
     "build": "tsc && node ./dist/scripts/fix-imports.js > boilrkit-build.log",
-    "postbuild": "node -e \"if (process.platform !== 'win32') require('child_process').execSync('chmod +x ./dist/bin/boilrkit.js')\""
+    "postbuild": "node -e \"if (process.platform !== 'win32') require('child_process').execSync('chmod +x ./dist/bin/boilrkit.js')\"",
+    "start": "npm run dev",
+    "start:prod": "npm run build && npm run preview"
   },
   "keywords": [
     "react",

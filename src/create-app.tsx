@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import type { ChildProcess } from 'child_process';
 import { execSync, spawn } from 'child_process';
 import cliProgress from 'cli-progress';
 import { Command } from 'commander';
@@ -306,7 +307,7 @@ export default {
       }
       
       // Launch using the best available method
-      let guiProcess;
+      let guiProcess: ChildProcess;
       if (desktopCommanderPath) {
         // Direct node execution (more reliable)
         guiProcess = spawn('node', [desktopCommanderPath, 'gui'], { 
@@ -343,9 +344,8 @@ export default {
           resolve(true);
         });
         
-        guiProcess.on('error', (err) => {
-          console.error(chalk.red(`Failed to start Desktop Commander: ${err}`));
-          reject(err);
+        guiProcess.on('error', (err: Error) => {
+          console.error(chalk.red(`Failed to start Desktop Commander: ${err.message}`));
         });
         
         // Set a reasonable timeout in case neither event fires
