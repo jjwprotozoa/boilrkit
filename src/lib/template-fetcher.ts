@@ -37,9 +37,7 @@ export async function fetchTemplates(
 ): Promise<void> {
   const repo = config.templates.repo || 'jjwprotozoa/boilrkit-templates';
   const branch = config.templates.branch || 'main';
-  const clonePath =
-    config.templates.path || path.join(os.tmpdir(), 'boilrkit-templates');
-
+  const clonePath = config.templates.path || path.join(os.tmpdir(), 'boilrkit-templates');
   const repoUrl = `https://github.com/${repo}.git`;
 
   console.log(chalk.cyan(`\nFetching templates...`));
@@ -90,7 +88,11 @@ export async function fetchTemplates(
   }
 }
 
-async function copyTemplateFiles(options: Partial<AppOptions>, templatePath: string, projectName: string): Promise<void> {
+async function copyTemplateFiles(
+  options: Partial<AppOptions>,
+  templatePath: string,
+  projectName: string
+): Promise<void> {
   const folders = await fs.readdir(templatePath);
   const available = folders.filter(folder =>
     fs.statSync(path.join(templatePath, folder)).isDirectory()
@@ -116,9 +118,17 @@ async function copyTemplateFiles(options: Partial<AppOptions>, templatePath: str
     }
   }
 
+  // ✅ Install App.tsx or AppNoRouter.tsx
   const selectedAppFile = options.router ? 'App.tsx' : 'AppNoRouter.tsx';
   const customAppPath = path.join(templatePath, selectedAppFile);
-  const targetAppPath = path.join(projectName, 'src', 'App.tsx');
+  const targetSrcFolder = path.join(projectName, 'src');
+  const targetAppPath = path.join(targetSrcFolder, 'App.tsx');
+
+  // Ensure src/ exists
+  if (!fs.existsSync(targetSrcFolder)) {
+    console.warn(chalk.yellow(`⚠️ src folder does not exist at ${targetSrcFolder}, creating it...`));
+    fs.mkdirpSync(targetSrcFolder);
+  }
 
   if (!fs.existsSync(customAppPath)) {
     throw new Error(`❌ Template file not found: ${customAppPath}`);
@@ -133,7 +143,7 @@ async function copyTemplateFiles(options: Partial<AppOptions>, templatePath: str
   fs.copyFileSync(customAppPath, targetAppPath);
   console.log(chalk.green(`📄 Installed ${selectedAppFile} as ${targetAppPath}`));
 
-  ensureCorrectFileExtensions(path.join(projectName, 'src'));
+  ensureCorrectFileExtensions(targetSrcFolder);
 }
 
 function copyDirectory(src: string, dest: string): void {
