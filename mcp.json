@@ -1,46 +1,50 @@
 [
   {
-    "label": "▶️ Start Dev",
-    "command": "yarn dev"
+    "label": "▶️ Start Dev Server",
+    "command": "npm run dev"
   },
   {
-    "label": "🚀 Build Project",
-    "command": "yarn build"
+    "label": "🚀 Build for Production",
+    "command": "npm run build"
   },
   {
-    "label": "🧪 Preview Production Build",
-    "command": "yarn preview"
+    "label": "🧪 Preview Build",
+    "command": "npm run preview"
   },
   {
     "label": "🔄 Install Dependencies",
-    "command": "yarn install"
+    "command": "npm install"
   },
   {
     "label": "🧹 Format Code",
-    "command": "yarn format"
+    "command": "npm run format"
   },
   {
-    "label": "📂 Directory Summary",
-    "command": "./directory-summary.ps1"
+    "label": "📂 Show Directory Structure",
+    "command": "./scripts/directory-summary.ps1"
   },
   {
-    "label": "🧠 Add AI (GPT/Claude)",
-    "command": "boilrkit add ai"
+    "label": "🧠 Add AI Integration (GPT/Claude)",
+    "command": "npx boilrkit add ai"
   },
   {
-    "label": "🧱 Add Auth",
-    "command": "boilrkit add auth"
+    "label": "🔐 Add Firebase Auth",
+    "command": "npx boilrkit add auth"
   },
   {
-    "label": "💳 Add Payments",
-    "command": "boilrkit add payments"
+    "label": "💳 Add Payment Module",
+    "command": "npx boilrkit add payments"
   },
   {
-    "label": "📱 Add PWA Support",
-    "command": "boilrkit add pwa"
+    "label": "📱 Enable PWA Support",
+    "command": "npx boilrkit add pwa"
   },
   {
-    "label": "⚙️ Reinitialize Config",
-    "command": "boilrkit init"
+    "label": "🛠️ Reinitialize BoilrKit Config",
+    "command": "npx boilrkit init"
+  },
+  {
+    "label": "🔥 Push to GitHub",
+    "command": "python push_boilrkit.py"
   }
 ]
