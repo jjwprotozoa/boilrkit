@@ -1,0 +1,13 @@
+title: Boilrkit
+include: true
+visibility: featured
+status: in-progress
+tier: flagship
+stack: [Node.js, TypeScript, CLI, Templates, AI APIs]
+roles: [Founder, DX Engineer]
+homepage_url: https://github.com/jjwprotozoa/boilrkit
+highlights:
+  - CLI scaffolding with GPT/Claude integration
+  - Modular template/component system
+  - Built for monetizable dev tooling
+topics: [portfolio:include, domain:devtools, cli, automation]
